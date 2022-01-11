@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\Repositories\" />
+    <Folder Include="Interfaces\Settings\" />
+    <Folder Include="Interfaces\Validators\" />
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Requests\" />
+    <Folder Include="Responses\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Enum\" />
+    <Folder Include="Services\" />
+    <Folder Include="Validators\" />
+    <Folder Include="Interfaces\ExternalServicesProxies\" />
+    <Folder Include="Requests\Filters\" />
+    <Folder Include="Services\CommandServices\" />
+    <Folder Include="Services\QueryServices\" />
+    <Folder Include="Services\ExportServices\" />
+    <Folder Include="Interfaces\Services\CommandServices\" />
+    <Folder Include="Interfaces\Services\QueryServices\" />
+    <Folder Include="Interfaces\Services\ExportServices\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.5.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Doosy.Framework.Domain\Doosy.Framework.Domain.csproj" />
+  </ItemGroup>
+</Project>

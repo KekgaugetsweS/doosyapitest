@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  doosy.api:
+    image: ${DOCKER_REGISTRY-}doosyapi
+    build:
+      context: .
+      dockerfile: Doosy.API/Dockerfile
+networks:
+  default:
+    external:
+      name: nat
