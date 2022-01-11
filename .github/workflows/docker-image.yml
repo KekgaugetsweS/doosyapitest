@@ -1,0 +1,52 @@
+name: Docker Image CD
+
+on:
+  workflow_dispatch:
+ 
+env:
+  IMAGE_NAME: doosyapii
+
+
+jobs:
+
+  release:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - name: Login to Docker hub
+      uses: docker/login-actions@v1
+      with:
+        username: ${{secrets.DOCKER_HUB_USERNAME }}
+        password: $ {{ secrets.DOCKER_HUB ACCESS_TOKEN }}
+        
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+      
+    - name: Build and push Docke image
+      id:  docker_build
+      uses: docker/build-push-action@v2
+      with: 
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/doosyapii:latest
+    - name: image deigest
+      run: echo ${{ steps.build.outputs.diegest }}
+      
+    - name: testing doosy-deploy ssh  connection
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST}}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          if [  "$(docker ps  -a -f status=running  -f  name=webapplications)" ]; then
+            docker kill webapplications;
+            docker rm webapplications;
+            docker create --name webapplications  -p 5002:80 kekgaugetswe/webapplications:latest
+            docker start webapplications
+          fi
+          docker ps -a
+          
