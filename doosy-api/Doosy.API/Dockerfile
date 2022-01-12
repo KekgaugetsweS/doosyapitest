@@ -18,7 +18,7 @@ WORKDIR "/src/doosy-api/Doosy.API"
 RUN dotnet build "./Doosy.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "./doosy-api/Doosy.API.csproj" -c Release -o /app/publish
+RUN dotnet publish "./doosy-api/Doosy.API/Doosy.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
