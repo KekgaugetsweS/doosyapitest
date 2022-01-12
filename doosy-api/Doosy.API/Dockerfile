@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Doosy.API.csproj", "Doosy.API/"]
+COPY ["./Doosy.API/Doosy.API.csproj", "Doosy.API/"]
 COPY ["Doosy.Framework.Infrastructure/Doosy.Framework.Infrastructure.csproj", "Doosy.Framework.Infrastructure/"]
 COPY ["Doosy.Framework.Domain/Doosy.Framework.Domain.csproj", "Doosy.Framework.Domain/"]
 COPY ["Doosy.Domain/Doosy.Domain.csproj", "Doosy.Domain/"]
@@ -23,4 +23,4 @@ RUN dotnet publish "Doosy.API.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Doosy.API.dll"]
+ENTRYPOINT ["dotnet", "Doosy.API.dll"] 
