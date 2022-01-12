@@ -14,7 +14,7 @@ COPY ["./doosy-api/Doosy.Domain/Doosy.Domain.csproj", "Doosy.Domain/"]
 COPY ["./doosy-api/Doosy.Infrastructure/Doosy.Infrastructure.csproj", "Doosy.Infrastructure/"]
 RUN dotnet restore "./Doosy.API/Doosy.API.csproj"
 COPY . .
-WORKDIR "/src/Doosy.API"
+WORKDIR "/src/doosy-api/Doosy.API"
 RUN dotnet build "Doosy.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
