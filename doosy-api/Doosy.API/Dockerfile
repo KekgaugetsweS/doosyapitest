@@ -12,7 +12,7 @@ COPY ["./doosy-api/Doosy.Framework.Infrastructure/Doosy.Framework.Infrastructure
 COPY ["./doosy-api/Doosy.Framework.Domain/Doosy.Framework.Domain.csproj", "Doosy.Framework.Domain/"]
 COPY ["./doosy-api/Doosy.Domain/Doosy.Domain.csproj", "Doosy.Domain/"]
 COPY ["./doosy-api/Doosy.Infrastructure/Doosy.Infrastructure.csproj", "Doosy.Infrastructure/"]
-RUN dotnet restore "./doosy-api/Doosy.API/Doosy.API.csproj"
+RUN dotnet restore "/Doosy.API/Doosy.API.csproj"
 COPY . .
 WORKDIR "/src/Doosy.API"
 RUN dotnet build "./doosy-api/Doosy.API/Doosy.API.csproj" -c Release -o /app/build
