@@ -15,7 +15,7 @@ COPY ["./doosy-api/Doosy.Infrastructure/Doosy.Infrastructure.csproj", "Doosy.Inf
 RUN dotnet restore "./Doosy.API/Doosy.API.csproj"
 COPY . .
 WORKDIR "/src/Doosy.API"
-RUN dotnet build "./doosy-api/Doosy.API/Doosy.API.csproj" -c Release -o /app/build
+RUN dotnet build "./Doosy.API/Doosy.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "./Doosy.API/Doosy.API.csproj" -c Release -o /app/publish
