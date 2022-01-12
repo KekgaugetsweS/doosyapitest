@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["./Doosy.API/Doosy.API.csproj", "Doosy.API/"]
+COPY ["Doosy.API/Doosy.API.csproj", "Doosy.API/"]
 COPY ["Doosy.Framework.Infrastructure/Doosy.Framework.Infrastructure.csproj", "Doosy.Framework.Infrastructure/"]
 COPY ["Doosy.Framework.Domain/Doosy.Framework.Domain.csproj", "Doosy.Framework.Domain/"]
 COPY ["Doosy.Domain/Doosy.Domain.csproj", "Doosy.Domain/"]
