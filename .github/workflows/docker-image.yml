@@ -32,7 +32,7 @@ jobs:
     - name: Build and push Docker image
       run: |
         docker build -f ./doosy-api/Doosy.API/Dockerfile -t doosyapii:latest .
-        docker push kekgaugetswe/doosyapii
+        docker push doosyapii
       
       
     - name: image deigest
