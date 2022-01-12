@@ -8,10 +8,10 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY  ["./doosy-api/Doosy.API/", "Doosy.API/"]
-COPY ["Doosy.Framework.Infrastructure/Doosy.Framework.Infrastructure.csproj", "Doosy.Framework.Infrastructure/"]
-COPY ["Doosy.Framework.Domain/Doosy.Framework.Domain.csproj", "Doosy.Framework.Domain/"]
-COPY ["Doosy.Domain/Doosy.Domain.csproj", "Doosy.Domain/"]
-COPY ["Doosy.Infrastructure/Doosy.Infrastructure.csproj", "Doosy.Infrastructure/"]
+COPY ["./doosy-api/Doosy.Framework.Infrastructure/Doosy.Framework.Infrastructure.csproj", "Doosy.Framework.Infrastructure/"]
+COPY ["./doosy-api/Doosy.Framework.Domain/Doosy.Framework.Domain.csproj", "Doosy.Framework.Domain/"]
+COPY ["./doosy-api/Doosy.Domain/Doosy.Domain.csproj", "Doosy.Domain/"]
+COPY ["./doosy-api/Doosy.Infrastructure/Doosy.Infrastructure.csproj", "Doosy.Infrastructure/"]
 RUN dotnet restore "Doosy.API/Doosy.API.csproj"
 COPY . .
 WORKDIR "/src/Doosy.API"
