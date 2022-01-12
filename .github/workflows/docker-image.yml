@@ -30,7 +30,7 @@ jobs:
       
       
     - name: Build and push Docke image
-      run: docker build --file ./doosy-api/Doosy.API/Dockerfile --tag doosyapii:latest
+      run: docker build -f ./doosy-api/Doosy.API/Dockerfile -t doosyapii:latest .
       
     - name: image deigest
       run: echo ${{ steps.build.outputs.diegest }}
