@@ -21,14 +21,30 @@ jobs:
       uses: actions/checkout@v2
       
       
+    
+        
+    - name: build image
+      run: docker build -f ./doosy-api/Doosy.API/Dockerfile  -t doosyapii:latest .
+      
     - name: Login to Docker hub
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
         
-    - name: build image
-      run: docker build -f ./doosy-api/Doosy.API/Dockerfile  -t doosyapii:latest .
+    - name: Push image
+      run: |
+        IMAGE_ID= ${{ SECRETS.DOCKER_REGESTRY_URL }}/$IMAGE_NAME
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+          # Use Docker `latest` tag convention
+          [ "$VERSION" == "master" ] && VERSION=latest
+          echo IMAGE_ID=$IMAGE_ID
+          echo VERSION=$VERSION
+
+          docker tag image $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
     
       
       
