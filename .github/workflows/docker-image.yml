@@ -54,11 +54,15 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          if [  "$(docker ps  -a -f status=running  -f  name=webapplications)" ]; then
-            docker kill webapplications;
-            docker rm webapplications;
-            docker create --name webapplications  -p 5002:80 kekgaugetswe/webapplications:latest
-            docker start webapplications
-          fi
-          docker ps -a
-          
+          if [[ "$(docker images -q myimage:mytag 2> /dev/null)" == "" ]]; then
+            docker pull kekgaugetswe/doosyapii:latest
+            
+            if [  "$(docker ps  -a -f status=running  -f  name=doosyapii)" ]; then
+              docker kill doosy;
+              docker rm webapplications;
+              docker create --name doosyapii  -p 5003:80 kekgaugetswe/doosyapii:latest
+              docker start doosyapii  
+            else
+              docker create --name doosyapii  -p 5003:80 kekgaugetswe/doosyapii:latest
+              docker start doosyapii      
+            fi
