@@ -15,30 +15,21 @@ jobs:
 
     steps:
     
+    
+        
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+      
     - name: Login to Docker hub
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
         
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: build image
+      run: docker build -f ./doosy-api/Doosy.API/Dockerfile  -t doosyapii:latest
     
-    
-    
-    
-      
-      
-    
-        
-        
-    - name: USING ACTION TO BUILD AND PUST :)
-      uses: NRO04/docker-build-push-action@v2
-      with: #args for action, all of them are required.
-          name-repository: ${{ github.repository }} #repository name, specify what the repository will be called on dockerhub.
-          tag: v1 #tag for repository
-          docker-username: ${{ secrets.DOCKERHUB_USERNAME }} # docker account - username
-          docker-password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       
       
     - name: image deigest
