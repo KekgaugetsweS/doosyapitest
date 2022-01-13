@@ -58,5 +58,6 @@ jobs:
             docker pull kekgaugetswe/doosyapii:latest
             docker create --name doosyapii  -p 5003:80 kekgaugetswe/doosyapii:latest
             docker start doosyapii 
+          fi
             
             
