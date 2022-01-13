@@ -54,7 +54,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          if [[ "$(docker images -q kekgaugetswe/doosyapii:latest> /dev/null)" == "" ]]; then
+          if [[ "$(docker images -q kekgaugetswe/doosyapii:latest /dev/null)" == "" ]]; then
             docker pull kekgaugetswe/doosyapii:latest
             docker create --name doosyapii  -p 5003:80 kekgaugetswe/doosyapii:latest
             docker start doosyapii 
