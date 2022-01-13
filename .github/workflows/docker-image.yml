@@ -32,13 +32,13 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
         
-    - name: publish to docker hub
+    - name: Build and push
       uses: docker/build-push-action@v2
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-        repository: kekgaugetswe/doosyapii
-        tags: latest, ${{ github.run_number }}
+          context: .
+          push: true
+          tags: kekgaugetswe/doosyapii:latest
+          dockerfile:  ./doosy-api/Doosy.API/Dockerfile
         
     
       
