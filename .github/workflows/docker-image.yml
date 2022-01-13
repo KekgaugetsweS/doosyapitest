@@ -56,13 +56,7 @@ jobs:
         script: |
           if [[ "$(docker images -q myimage:mytag 2> /dev/null)" == "" ]]; then
             docker pull kekgaugetswe/doosyapii:latest
+            docker create --name doosyapii  -p 5003:80 kekgaugetswe/doosyapii:latest
+            docker start doosyapii 
             
-            if [  "$(docker ps  -a -f status=running  -f  name=doosyapii)" ]; then
-              docker kill doosy;
-              docker rm webapplications;
-              docker create --name doosyapii  -p 5003:80 kekgaugetswe/doosyapii:latest
-              docker start doosyapii  
-            else
-              docker create --name doosyapii  -p 5003:80 kekgaugetswe/doosyapii:latest
-              docker start doosyapii      
-            fi
+            
