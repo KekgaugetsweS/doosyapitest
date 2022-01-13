@@ -28,7 +28,7 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
         
     - name: build image
-      run: docker build -f ./doosy-api/Doosy.API/Dockerfile  -t doosyapii:latest
+      run: docker build -f ./doosy-api/Doosy.API/Dockerfile  -t doosyapii:latest .
     
       
       
