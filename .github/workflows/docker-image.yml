@@ -23,8 +23,8 @@ jobs:
       
     
         
-    - name: build image
-      run: docker build -f ./doosy-api/Doosy.API/Dockerfile  -t doosyapii:latest .
+    #- name: build image
+      #run: docker build -f ./doosy-api/Doosy.API/Dockerfile  -t doosyapii:latest .
       
     - name: Login to Docker hub
       uses: docker/login-action@v1
@@ -38,7 +38,7 @@ jobs:
           context: .
           push: true
           tags: kekgaugetswe/doosyapii:latest
-          dockerfile:  ./doosy-api/Doosy.API/Dockerfile
+          file:  ./doosy-api/Doosy.API/Dockerfile
         
     
       
