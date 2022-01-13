@@ -34,7 +34,7 @@ jobs:
         
     - name: Push image
       run: |
-        IMAGE_ID= ${{ SECRETS.DOCKER_REGESTRY_URL }}/$IMAGE_NAME
+        IMAGE_ID= /$IMAGE_NAME
         VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           # Strip "v" prefix from tag name
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
