@@ -57,7 +57,12 @@ jobs:
           if   [[ ! "$(docker inspect kekgaugetswe/doosyapii:latest  )"  ]]; then
             docker pull kekgaugetswe/doosyapii:latest
             docker create --name doosyapii  -p 5003:80 kekgaugetswe/doosyapii:latest
-            docker start doosyapii 
+            docker start doosyapii
+          else
+            docker kill doosy;
+            docker rm webapplications;
+            docker create --name doosyapii  -p 5003:80 kekgaugetswe/doosyapii:latest
+            docker start doosyapii
           fi
           docker ps -a
             
